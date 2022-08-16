@@ -13,3 +13,5 @@ RUN chmod +x create_bls_key.sh
 
 # these are the directories we will mount volumes to
 RUN mkdir -p .hmy/blskeys
+
+CMD ["./hmy", "cookbook"]
