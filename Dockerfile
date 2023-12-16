@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS build
+FROM ubuntu:22.04 AS build
 
 RUN apt update && apt upgrade -y && apt install curl jq -y
 RUN mkdir /harmony_node
