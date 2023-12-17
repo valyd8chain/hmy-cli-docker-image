@@ -1,14 +1,12 @@
-FROM ubuntu:22.04 AS build
+FROM alpine:latest AS run
 
-RUN apt update && apt upgrade -y && apt install curl jq -y
+RUN apk update
+RUN apk --no-cache add curl
+
 RUN mkdir /harmony_node
 WORKDIR /harmony_node
 
 RUN curl -LO https://github.com/harmony-one/go-sdk/releases/download/v1.4.2/hmy && chmod +x hmy
-
-FROM alpine:latest AS run
-COPY --from=build /harmony_node /harmony_node
-WORKDIR /harmony_node
 
 # Copy over helpers scripts
 COPY create_bls_key.sh /harmony_node/
